@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --verdeCardenal: #0C1A1A;
+  --verdeAzuladoClaro: #6ACFC7;
+  --main-font: Helvetica;
+}
+
+/* @theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+} */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html {
+  box-sizing: border-box;
+  font-family: var(--main-font);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  /* padding: 20px 20px 60px;
+  max-width: 680px; */
+  margin: 0;
+  background: var(--verdeCardenal);
+  /* font-family: Arial, Helvetica, sans-serif; */
+  color: var(--verdeAzuladoClaro);
+}
+
+@layer utilities {
+  .animate-shimmer-diagonal {
+    background-size: 200% 200%;
+    animation: shimmer-diagonal 5s infinite linear;
+  }
+
+  @keyframes shimmer-diagonal {
+    0% {
+      background-position: 0% 100%;
+    }
+    100% {
+      background-position: 100% 0%;
+    }
+  }
+}
