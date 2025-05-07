@@ -7,7 +7,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-full w-full grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-0">
       {/* Sección de imagen - ahora con ancho completo */}
-      <div className="hidden lg:block relative bg-[url('/textura2.jpeg')] bg-cover bg-center bg-no-repeat bg-blend-overlay bg-white bg-opacity-40 h-full min-h-[80vh] w-full">
+      <div className="hidden lg:block relative bg-cover bg-center bg-no-repeat bg-blend-overlay bg-white bg-opacity-40 h-full min-h-[80vh] w-full">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-500/90 to-transparent animate-shimmer-diagonal mix-blend-screen pointer-events-none" />
         <div className="flex items-center justify-center h-full p-10 w-full">
           <img 
