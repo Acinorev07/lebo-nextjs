@@ -2,6 +2,7 @@
 // import LoginForm from '@/app/ui/login-form';
 import SignupForm from '@/app/ui/signup-form';
 import Logo from '@/app/ui/logo';
+import Link from 'next/link'
 
 export default function LoginPage() {
   return (
@@ -24,12 +25,7 @@ export default function LoginPage() {
         <header className="w-full p-3 lg:p-6 bg-white shadow-md">
           <nav className="flex justify-between items-center w-full max-w-7xl mx-auto">
             <Logo />
-            <a 
-              href="/sign-up" 
-              className="px-4 py-2 bg-teal-800 text-white rounded hover:bg-amber-700 transition-colors text-lg"
-            >
-              Crear una cuenta
-            </a>
+            <Link href={`/supplier-registration`} className="px-4 py-2 bg-teal-800 text-white rounded hover:bg-amber-700 transition-colors text-lg">Crear una cuenta</Link>
           </nav>
         </header>
 

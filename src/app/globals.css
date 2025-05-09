@@ -42,6 +42,8 @@ body {
   color: var(--verdeAzuladoClaro);
 }
 
+
+
 @layer utilities {
   .animate-shimmer-diagonal {
     background-size: 200% 200%;

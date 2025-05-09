@@ -1,3 +1,4 @@
+//src/app/actions/auth.ts
 
 import { SignupFormSchema, FormState } from "../lib/definitions";
 
@@ -14,6 +15,7 @@ export async function signup(state: FormState, formData: FormData): Promise<Form
       const errors = validatedFields.error.flatten().fieldErrors;
       
       return {
+        success:false,
         errors: {
           name: errors.name ?? [],
           email: errors.email ?? [],
@@ -23,7 +25,11 @@ export async function signup(state: FormState, formData: FormData): Promise<Form
       };
     }
   
-    // return { message: 'User created successfully' };
+    return { 
+      success: true,
+      message: 'User created successfully',
+      errors: undefined
+    };
 
     // 2. Prepare data for insertion into database
     // const {name, email, password} = validatedFields.data

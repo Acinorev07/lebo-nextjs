@@ -1,112 +1,84 @@
-// src/app/iu/signup-form.tsx
 
-'use client'
+// src/app/ui/signup-form.tsx
+'use client';
 
+import {signup} from "../actions/auth";
+import {useActionState, useRef, useState, useEffect} from "react";
+import {Button} from './button';
+import PasswordInput from './PasswordInput';
+import FormInput from './FormInput';
 
-import { signup } from "../actions/auth"
-import { useActionState, useRef} from "react"
-import {Button} from './button'
+export default function SignupForm() {
+    const [state, action, pending] = useActionState(signup, undefined);
 
-export default function SignupForm () {
-    const [state, action, pending] = useActionState(signup, undefined)
-    const formRef = useRef<HTMLFormElement>(null) //Referencia al formulario
-    const buttonRef = useRef<HTMLButtonElement>(null)
+    const formRef = useRef<HTMLFormElement>(null);
+    const [resetTrigger, setResetTrigger] = useState(false); //Contador para forzar reset
 
-    const handleSuccess = () => {
-        if (state?.success && formRef.current) {
-            formRef.current.reset()
+    useEffect(()=>{
+        if(state?.success){
+            console.log("Reset del formulario activado");
+            formRef.current?.reset();
+            setResetTrigger(prev=>!prev); //Alternamos el valor para forzar reset
         }
-    }
+    }, [state?.success]);
 
+    // const handleSuccess = () => {
+
+    //     console.log("Estamos en el componente SignupForm  el valor de useActionState");
+    //     console.log("Estamos en el componente SignupForm  el valor de state.success 1", state?.success);
+    //     console.log("Estamos en el componente SignupForm  el valor de state.message 1", state?.message);
+        
+    //     if (state?.success) {
+    //         console.log("Estamos en el componente SignupForm  el valor de state.success 2", state?.success);
+    //         console.log("Estamos en el componente SignupForm  el valor de state.message 2", state?.message);
+    //         // Puedes añadir lógica adicional aquí si es necesario
+    //         formRef.current?.reset();
+
+    //         // setResetCount(prev => prev + 1);
+    //     }
+    // };
 
     return (
-
-          <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-                <h1 className="text-2xl font-bold text-teal-800 mb-6">Inicia sesión como facturador en LeBo</h1>
-                <form
-                 ref={formRef} 
-                 action={action} 
-                 className="space-y-6"
-                 >
-                    <div className="space-y-4">
-                            {/* Campo para el nombre de la empresa */}
-                            <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nombre</label>
-                                <div className="mt-1 relative rounded-md shadow-sm">
-                                    <input 
-                                    id='name' 
-                                    name='name' 
-                                    placeholder='Nombre' 
-                                    className="block w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"/>
-                                </div>
-                            </div>
-                            {state?.errors?.name && <p>{state.errors.name}</p>}
-                            
-                            {/* Campo Email */}
-                            <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-                                 <div>
-                                   <input 
-                                      type="email" 
-                                      id='email' 
-                                      name='email' 
-                                      placeholder='Email' 
-                                      className="block w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"/>
-                                 </div>   
-                            </div>
-                            {state?.errors?.email && <p>{state.errors.email}</p>}
-                            
-                            {/* Campo Contraseña */}
-
-                                <div>
-                                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                                    Contraseña
-                                </label>
-                                <div className="mt-1 relative rounded-md shadow-sm">
-                                    <input
-                                        type="password"
-                                        id="password"
-                                        name="password"
-                                        className="block w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500 pr-10"
-                                    />
-                                    <button
-                                        type="button"
-                                        className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                                        aria-label="Mostrar contraseña"
-                                    >
-                                        👁️
-                                    </button>
-                                </div>
-                                </div>
-                                {state?.errors?.password && (
-                                    <div className="text-sm text-red-600 mt-2">
-                                        <p>La contraseña debe cumplir con:</p>
-                                        <ul className="list-disc pl-5">
-                                            <li>Mínimo 8 caracteres</li>
-                                            <li>2 letras mayúsculas</li>
-                                            <li>2 letras minúsculas</li>
-                                            <li>3 números</li>
-                                            <li>1 punto (.)</li>
-                                        </ul>
-                                    </div>
-                                )}
-                            </div>
-                            {/* Enlaces olvidé contraseña */}
-                            <p className="text-sm text-gray-600">
-                            ¿Has olvidado la <a href="/forgot-password" className="text-amber-700 hover:underline">contraseña</a> o el 
-                            <a href="/forgot-username" className="text-amber-700 hover:underline ml-1">nombre de usuario</a>?
-                            </p>
-
-                            <Button 
-                                ref={buttonRef}
-                                pending={pending} 
-                                texto="Registrarse"
-                                onSuccess={handleSuccess}
-                                
-                            />
-                   
-                </form>
-          </div>
-
-    )
+        <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+            <h1 className="text-2xl font-bold text-teal-800 mb-6">Inicia sesión como facturador en LeBo</h1>
+            <form ref={formRef}  action={action} className="space-y-6">
+                <div className="space-y-4">
+                    {/* Campo para el nombre */}
+                    <FormInput
+                        name="name"
+                        label="Nombre"
+                        placeholder="Nombre"
+                        errors={state?.errors?.name}
+                    />                  
+                    {/* Campo Email */}
+                    <FormInput
+                        type="email"
+                        name="email"
+                        label="Email"
+                        placeholder="Email"
+                        errors={state?.errors?.email}
+                    />
+                    {/* Campo Contraseña */}
+                    <PasswordInput 
+                        name="password"
+                        label="Contraseña"
+                        errors={state?.errors?.password}
+                        resetTrigger={resetTrigger} //Pasamos el estado de exito
+                        key={`password-input-${resetTrigger}`} //Key unica que cambia al resetear
+                        // className="flex w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"
+                    />
+                    {/* Enlaces olvidé contraseña */}
+                    <p className="text-sm text-gray-600">
+                        ¿Has olvidado la <a href="/forgot-password" className="text-amber-700 hover:underline">contraseña</a> o el 
+                        <a href="/forgot-username" className="text-amber-700 hover:underline ml-1">nombre de usuario</a>?
+                    </p>
+                    <Button 
+                        pending={pending} 
+                        texto="Registrarse"
+                        // onSuccess={handleSuccess}
+                    />
+                </div>
+            </form>
+        </div>
+    );
 }
