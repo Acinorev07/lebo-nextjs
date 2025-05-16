@@ -1,4 +1,5 @@
-import Header from './components/Header';
+
+//src/app/supplier-registration/page.tsx
 import SidePanel from './components/SidePanel';
 import FormSection from './components/FormSection';
 import FormInput from '../ui/FormInput';
@@ -30,11 +31,14 @@ export default function SupplierRegistrationPage() {
   ];
 
   return (
-    <div className="supplier-registration">
-      <Header />
-      <SidePanel />
+    <
+    >
+    
+      <aside className="hidden lg:block lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto">
+        <SidePanel />
+      </aside>
       
-      <main>
+      <main className="lg:col-start-2 row-start-2 p-4 overflow-y-auto h-[calc(100vh-4rem)]">
         <FormSection id="seccion1" title="Identificación" legend="Datos de registro en el RUT">
           <SelectInput 
             name="orga-jurid" 
@@ -168,6 +172,7 @@ export default function SupplierRegistrationPage() {
 
         {/* Otras secciones... */}
       </main>
-    </div>
+
+    </>
   );
 }

@@ -1,0 +1,55 @@
+lebo
+|---.next
+|---.vscode
+|---node_modules
+|---public
+|---src
+|     |---app
+|     |    |---actions
+|     |    |    |---auth.ts
+|     |    |---hooks
+|     |    |    |---useScrollSpy.ts
+|     |    |---lib
+|     |    |    |---actions.ts
+|     |    |    |---definitions.ts
+|     |    |---login
+|     |    |    |---layout.tsx
+|     |    |    |---page.tsx
+|     |    |---supplier-registration
+|     |    |    |---components
+|     |    |    |     |---FormSection-tsx
+|     |    |    |     |---Header.tsx
+|     |    |    |     |---SidePanel.module.css
+|     |    |    |     |---SidePanel.tsx
+|     |    |    |     |---TaxLevelSelect.tsx
+|     |    |    |---stylesModule
+|     |    |    |     |---section.module.css
+|     |    |    |---layout.tsx
+|     |    |    |---page.tsx
+|     |    |---ui
+|     |    |    |---button.tsx
+|     |    |    |---FormInput.tsx
+|     |    |    |---HamburguerIcon.tsx
+|     |    |    |---logo.tsx
+|     |    |    |---PasswordInput.tsx
+|     |    |    |---SelectInput.tsx
+|     |    |    |---signup-form.tsx
+|     |    |---favicon.ico
+|     |    |---globals.css
+|     |    |---layout.tsx
+|     |    |---page.tsx
+|     |---pages
+|---.env
+|---.env.development
+|---.env.local
+|---.env.product
+|---.gitignore
+|---eslint.config.msj
+|---next-env.d.ts
+|---next.config.ts
+|---package-lock.json
+|---package.json
+|---postcss.config.mjs
+|---README.md
+|---tailwind.config.msj
+|---tsconfig.json

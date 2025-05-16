@@ -1,0 +1,18 @@
+/*src/app/supplier-registration/stylesModule/section.module.css*/
+.section {
+
+    padding: 2rem;
+    padding-top:4rem; 
+    margin-left: auto;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100vh;
+     text-align: center;
+}
+
+/* .section {
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+} */

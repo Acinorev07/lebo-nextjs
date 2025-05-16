@@ -1,0 +1,27 @@
+/* src/app/supplier-registration/stylesModule/Header.module.css */
+/* Mantén solo lo que Tailwind no puede manejar fácilmente */
+.header {
+  background-color: var(--verdeCardenal);
+  border-bottom: 1px solid var(--verdeAzuladoClaro); 
+  height: 8rem;   
+  z-index: 1000; 
+  padding: auto;  
+  /* width: 100%; */
+  background-color: var(--verdeCardenal);
+  border-bottom: 1px solid var(--verdeAzuladoClaro);
+}
+
+/* .header {
+  background-color: var(--verdeCardenal);
+  border-bottom: 1px solid var(--verdeAzuladoClaro);
+  height: 4rem;
+} */
+
+.btn-back {
+  background-color: var(--verdeAzuladoClaro);
+  color: var(--verdeCardenal);
+}
+
+.btn-back:hover {
+  background-color: #5abfaf; /* Color personalizado */
+}

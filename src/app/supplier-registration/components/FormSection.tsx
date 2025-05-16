@@ -1,5 +1,7 @@
+//src/app/supplier-registration/components/FormSection.tsx
 'use client';
 
+import section from '@/app/supplier-registration/stylesModule/section.module.css'
 import { ReactNode } from 'react';
 
 type FormSectionProps = {
@@ -11,7 +13,7 @@ type FormSectionProps = {
 
 export default function FormSection({ id, title, legend, children }: FormSectionProps) {
   return (
-    <section id={id} className="section" data-scroll-spy>
+    <section id={id} className={section.section} data-scroll-spy>
       <h2>{title}</h2>
       <div className="register-form">
         <form className="identification-form">
