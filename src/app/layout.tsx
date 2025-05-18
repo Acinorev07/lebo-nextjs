@@ -17,6 +17,9 @@ export default function RootLayout({
 }){
   return (
     <html lang="es" className="h-full">
+       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
       <body className="h-full bg-[#0C1A1A] text-[#6ACFC7] overflow-hidden">
        
           {children}
