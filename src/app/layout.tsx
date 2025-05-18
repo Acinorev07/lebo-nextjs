@@ -20,7 +20,7 @@ export default function RootLayout({
        {/* <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head> */}
-      <body className="h-full bg-[#0C1A1A] text-[#6ACFC7] overflow-hidden">
+      <body className="h-screen bg-[#0C1A1A] text-[#6ACFC7] overflow-hidden">
        
           {children}
        
