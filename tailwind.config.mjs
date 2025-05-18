@@ -1,8 +1,11 @@
+//src/tailwind.config.msj
 /** @type {import('tailwindcss').Config} */
 const config = {
+    // mode:"jit",
     content: [
       "./app/**/*.{js,ts,jsx,tsx}",
       "./src/**/*.{js,ts,jsx,tsx}",
+      // "./components/**/*.{js,ts,jsx,tsx}",
       "./public/**/*.html"
     ],
     theme: {
