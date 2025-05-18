@@ -25,14 +25,14 @@ export default function TaxLevelSelect() {
   };
 
   return (
-    <div className="form-group-obligaciones">
+    <div className="flex flex-col gap-4 form-group-obligaciones text-xl">
       <label>Obligaciones Tributarias</label>
       
-      <div className="selects-container">
+      <div className="flex flex-col gap-4 selects-container">
         {selects.map((select) => (
           <SelectInput
             key={select.id}
-            label='hola'
+            label=''
             name={`oblig-tribut-${select.id}`}
             options={obligaciones}
             className="oblig-tribut"
@@ -40,12 +40,12 @@ export default function TaxLevelSelect() {
         ))}
       </div>
       
-      <div className="buttons-container">
+      <div className="flex justify-center gap-4 buttons-container">
         <button 
           type="button" 
           onClick={addSelect}
           disabled={selects.length >= 5}
-          className="btn-obligacion"
+          className="border border-gray-300 rounded-md btn-obligacion flex-1 text-xl hover:text-white hover:bg-[var(--verdeAzuladoClaro)] transition"
         >
           +
         </button>
@@ -53,7 +53,7 @@ export default function TaxLevelSelect() {
           type="button" 
           onClick={removeSelect}
           disabled={selects.length <= 1}
-          className="btn-obligacion"
+          className="border border-gray-300 rounded-md btn-obligacion flex-1 text-xl hover:text-white hover:bg-[var(--verdeAzuladoClaro)] transition"
         >
           -
         </button>

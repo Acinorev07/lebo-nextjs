@@ -16,7 +16,7 @@ export default function SupplierRegistrationLayout({
   return (
 
     <div 
-    className="min-h-screen grid grid-rows-[4rem_1fr] grid-cols-[1fr] lg:grid-cols-[20%_80%]"
+    className="min-h-screen grid grid-rows-[8rem_1fr] grid-cols-[1fr] lg:grid-cols-[20%_80%] p-4 gap-4"
     >
       <Header />
       {children}

@@ -39,7 +39,7 @@ export default function SignupForm() {
     // };
 
     return (
-        <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+        <div className="w-full max-w-md text-xl bg-[var(--verdeCardenal-1)] p-8 rounded-lg shadow-md">
             <h1 className="text-2xl font-bold text-teal-800 mb-6">Inicia sesión como facturador en LeBo</h1>
             <form ref={formRef}  action={action} className="space-y-6">
                 <div className="space-y-4">

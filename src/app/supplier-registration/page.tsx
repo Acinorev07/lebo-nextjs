@@ -1,4 +1,4 @@
-
+'use client'
 //src/app/supplier-registration/page.tsx
 import SidePanel from './components/SidePanel';
 import FormSection from './components/FormSection';
@@ -6,13 +6,19 @@ import FormInput from '../ui/FormInput';
 import SelectInput from '../ui/SelectInput';
 import TaxLevelSelect from './components/TaxLevelSelect';
 import PasswordInput from '../ui/PasswordInput';
+import HamburgerIcon from '../ui/HamburguerIcon';
+
+import { useState } from 'react';
 
 export default function SupplierRegistrationPage() {
+  
   const juridicalOptions = [
     { value: 'sa', label: 'Sociedad Anónima' },
     { value: 'ltda', label: 'Sociedad Limitada' },
     // ... más opciones
   ];
+
+  const [isActive, setIsActive] = useState(false);
 
   const departamento = [
     { value: '5', label: 'Antioquia' },
@@ -33,142 +39,154 @@ export default function SupplierRegistrationPage() {
   return (
     <
     >
-    
-      <aside className="hidden lg:block lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto">
-        <SidePanel />
+      <aside className={`${isActive ? 'fixed' : 'hidden'} lg:block lg:sticky lg:top-[10rem] lg:h-[calc(100vh-10rem)] mt-8 border rounded-md`}>
+        <SidePanel isActive={isActive} setIsActive={setIsActive}/>
       </aside>
       
-      <main className="lg:col-start-2 row-start-2 p-4 overflow-y-auto h-[calc(100vh-4rem)]">
-        <FormSection id="seccion1" title="Identificación" legend="Datos de registro en el RUT">
-          <SelectInput 
-            name="orga-jurid" 
-            label="Organización jurídica" 
-            options={juridicalOptions} 
-          />
-          
-          <FormInput 
-            type="file"
-            name="logo"
-            label="Logo:"
-            title="sube tu foto"
-          />
+      <main className="lg:col-start-2 row-start-2 p-4 overflow-y-auto h-[calc(100vh-8rem)]">
+        <button 
+        className={`lg:top-0 fixed z-40 top-[10rem] left-4 hamburger hamburger--collapse ${
+            isActive ? 'is-active' : ''
+          }`}
+        onClick={() => setIsActive(!isActive)}
+         >
+         <HamburgerIcon/>
+        </button>
 
-          <FormInput
-             type ="input"
-             name= "razon_social"
-             label="Razon Social"
-             title="Razon social"
-
-          />
-
-          <FormInput
-             type ="input"
-             name= "nit"
-             label="NIT"
-             title="NIT"
-
-          />
-
-          <FormInput
-            type ="input"
-            name= "rues"
-            label="RUES"
-            title="RUES"
-          />
-          
-          {/* Más campos... */}
-        </FormSection>
-
-
-        <FormSection id="seccion2" title="Direccion" legend="Direccion">
-          <SelectInput 
-              name="Departamento" 
-              label="Departamento" 
-              options={departamento} 
-            />
-
+        <div className='max-w-[900px] mx-auto'>
+          <FormSection id="seccion1" title="Identificación" legend="Datos de registro en el RUT">
             <SelectInput 
-              name="Municipio" 
-              label="Municipio" 
-              options={municipio} 
+              name="orga-jurid" 
+              label="Organización jurídica" 
+              options={juridicalOptions} 
+            />
+            
+            <FormInput 
+              type="file"
+              name="logo"
+              label="Logo:"
+              title="sube tu foto"
             />
 
-             <FormInput
+            <FormInput
               type ="input"
-              name= "address"
-              label="Linea de direccion"
-              title="address"
+              name= "razon_social"
+              label="Razon Social"
+              title="Razon social"
+
             />
-             <FormInput
+
+            <FormInput
               type ="input"
-              name= "codigo_postal"
-              label="Codigo postal"
-              title="codigo_postal"
+              name= "nit"
+              label="NIT"
+              title="NIT"
+
             />
 
-        </FormSection>
+            <FormInput
+              type ="input"
+              name= "rues"
+              label="RUES"
+              title="RUES"
+            />
+            
+            {/* Más campos... */}
+          </FormSection>
 
-        <FormSection id="seccion3" title="Obligaciones Tributarias" legend="obligaciones tributarias del facturador">
-          <TaxLevelSelect />
-        </FormSection>
 
-        <FormSection id="seccion4" title="Informacion de contacto" legend="Datos de contacto del proveedor">
-          
-              <FormInput
-                name= "nombre_contacto"
-                label="Nombre del contacto principal"
-                title="Nombre del contacto principal"
-                pattern='^[A-Za-zÑñÁáÉéÍíÓóÚú\s]+$'
-                required
+          <FormSection id="seccion2" title="Direccion" legend="Direccion">
+            <SelectInput 
+                name="Departamento" 
+                label="Departamento" 
+                options={departamento} 
+              />
+
+              <SelectInput 
+                name="Municipio" 
+                label="Municipio" 
+                options={municipio} 
               />
 
               <FormInput
-                type='tel'
-                name= "celular"
-                label="Celular"
-                title="Numero de celular"
-                pattern='"[0-9]{10,15}'
-                required
-              />
-
-              <FormInput
-                type ="email"
-                name= "correo"
-                label="Correo electrónico"
-                placeholder="correo@proveedor.com"
-                title="Correo electronico valido"
-                pattern='pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z]{2,}" '
-                required
-              />
-          
-        </FormSection> 
-
-        <FormSection id='seccion5' title='Credenciales de acceso' legend='Configuracion de cuenta de acceso' >
-              <PasswordInput
-                  name='password'
-                  label='Ingrese una contraseña'
-                  />
-
-              <PasswordInput
-                  name='password'
-                  label='Confirme la contraseña'
-                  />
-
-              <FormInput
-                type ="checkbox"
-                name= "terminos"
-                label="Acepto los terminos y condiciones"
-                title="Acepto los terminos y condiciones"
-                required
+                type ="input"
+                name= "address"
+                label="Linea de direccion"
+                title="address"
               />
               <FormInput
-                type ="checkbox"
-                name= "privacidad"
-                label="Acepto la politica de privacidad"
-                title="Acepto la politica de privacidad"
-                required
+                type ="input"
+                name= "codigo_postal"
+                label="Codigo postal"
+                title="codigo_postal"
               />
-        </FormSection>
+
+          </FormSection>
+
+          <FormSection id="seccion3" title="Obligaciones Tributarias" legend="obligaciones tributarias del facturador">
+            <TaxLevelSelect />
+          </FormSection>
+
+          <FormSection id="seccion4" title="Informacion de contacto" legend="Datos de contacto del proveedor">
+            
+                <FormInput
+                  name= "nombre_contacto"
+                  label="Nombre del contacto principal"
+                  title="Nombre del contacto principal"
+                  pattern='^[A-Za-zÑñÁáÉéÍíÓóÚú\s]+$'
+                  required
+                />
+
+                <FormInput
+                  type='tel'
+                  name= "celular"
+                  label="Celular"
+                  title="Numero de celular"
+                  pattern='"[0-9]{10,15}'
+                  required
+                />
+
+                <FormInput
+                  type ="email"
+                  name= "correo"
+                  label="Correo electrónico"
+                  placeholder="correo@proveedor.com"
+                  title="Correo electronico valido"
+                  pattern='pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z]{2,}" '
+                  required
+                />
+            
+          </FormSection> 
+
+          <FormSection id='seccion5' title='Credenciales de acceso' legend='Configuracion de cuenta de acceso' >
+                <PasswordInput
+                    name='password'
+                    label='Ingrese una contraseña'
+                    />
+
+                <PasswordInput
+                    name='password'
+                    label='Confirme la contraseña'
+                    />
+
+                <FormInput
+                  type ="checkbox"
+                  name= "terminos"
+                  label="Acepto los terminos y condiciones"
+                  title="Acepto los terminos y condiciones"
+                  required
+                />
+                <FormInput
+                  type ="checkbox"
+                  name= "privacidad"
+                  label="Acepto la politica de privacidad"
+                  title="Acepto la politica de privacidad"
+                  required
+                />
+          </FormSection>
+
+        </div>
+        
 
         {/* Otras secciones... */}
       </main>
