@@ -11,12 +11,12 @@ export default function SelectInput({
   name, 
   label, 
   options, 
-  className = 'flex gap-4 w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500 text-xl font-medium' 
+  className = 'flex gap-4 w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500 font-medium' 
 }: SelectInputProps) {
   return (
     <div className={className}>
       <label htmlFor={name}>{label}</label>
-      <select id={name} name={name} className="w-full border border-gray-300 rounded-md text-xl font-medium h-10">
+      <select id={name} name={name} className="w-full border border-gray-300 rounded-md font-medium h-10">
         <option value="">---</option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>

@@ -28,7 +28,7 @@ export default function SidePanel({isActive, setIsActive}:SidePanelProps) {
 
   return (
     <>
-     <aside className={`text-xl ml-1 border rounded-md lg:top-[10rem] lg:h-[calc(100vh-10rem)] ${styles.panel} ${isActive ? styles.isActive : ''}`}>
+     <aside className={`ml-1 border rounded-md lg:top-[10rem] lg:h-[calc(100vh-10rem)] ${styles.panel} ${isActive ? styles.isActive : ''}`}>
         <nav className={styles.menu}>
           {sections.map((section) => (
             <a 

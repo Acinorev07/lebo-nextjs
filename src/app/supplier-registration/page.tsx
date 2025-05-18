@@ -39,7 +39,7 @@ export default function SupplierRegistrationPage() {
   return (
     <
     >
-      <aside className={`${isActive ? 'fixed' : 'hidden'} lg:block lg:sticky lg:top-[10rem] lg:h-[calc(100vh-10rem)] mt-8 border rounded-md`}>
+      <aside className={`${isActive ? 'fixed' : 'hidden'} lg:block lg:sticky lg:top-[8rem] lg:h-[calc(100vh-8rem)] mt-8 border rounded-md`}>
         <SidePanel isActive={isActive} setIsActive={setIsActive}/>
       </aside>
       

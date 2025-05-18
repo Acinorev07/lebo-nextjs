@@ -8,7 +8,7 @@ import styles from "../stylesModule/Header.module.css";
 
 export default function Header() {
   return (
-    <header className={`${styles.header} grid-area-header fixed top-0 left-0 right-0 z-30 p-4 pt-10 border rounded-md m-4`}>
+    <header className={`${styles.header} grid-area-header fixed top-0 left-0 right-0 z-30 p-4 pt-5 border rounded-md m-4`}>
       <div className="flex items-start justify-between">
         <div className="w-24 self-start -mt-10">
           <Image 
