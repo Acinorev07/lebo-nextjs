@@ -16,10 +16,10 @@ export default function RootLayout({
   children: React.ReactNode
 }){
   return (
-    <html lang="es" className="h-full">
-       <head>
+    <html lang="es" className="h-screen">
+       {/* <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </head>
+      </head> */}
       <body className="h-full bg-[#0C1A1A] text-[#6ACFC7] overflow-hidden">
        
           {children}
